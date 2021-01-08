@@ -1,25 +1,39 @@
 import multiprocessing
 import time
-import os
+import os, sys
+import glob
 import timeit
 
 def write_in_file(filename, root):
     venv_name = os.path.basename(root)
     with open(filename, 'a') as text_file:
-        text_file.write(venv_name + ': '+root+'\n')
+        text_file.write(venv_name + ':' + root+'\n')
 
 def match_feature(file_name, dir_path):
     # this is the check pattern for windows only
-    checks = ["Lib", "Scripts/activate.ps1", "Scripts/activate.bat"]
+    if os.name == 'nt':
+        checks = ["Lib", "bin/activate", ""]
+    elif sys.platform == 'linux':
+        checks = ["lib/*/site-packages", "bin/python"]
+
     # will update the check pattern for Linux soon...
     
     check_flag = True
     for locs in checks:
-        path = os.path.realpath(os.path.join(dir_path, locs))
-        if not os.path.exists(path):
-            check_flag = False  # if any of the path is missing, then discard the folder
+        if os.name == 'nt':
+            path = os.path.realpath(os.path.join(dir_path, locs))
+            if not os.path.exists(path):
+                check_flag = False  # if any of the path is missing, then discard the folder
+        elif sys.platform == 'linux':
+            path = os.path.join(dir_path, locs)
+            results = glob.glob(path)
+            if not results:
+                check_flag = False
     if check_flag:
-        print(f"Windows 10 venv found, name:{os.path.basename(dir_path)}")
+        if os.name == 'nt':
+            print(f"Windows 10 venv found, name:{os.path.basename(dir_path)}")
+        elif sys.platform == 'linux':
+            print(f"Linux venv found, name: {os.path.basename(dir_path)}")
         write_in_file(file_name, dir_path)
 
 def main_runner(dir_path):

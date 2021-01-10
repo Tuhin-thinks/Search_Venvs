@@ -1,6 +1,22 @@
 import shutil
 import os
 
+tot_size = 0
+
+def get_size(start_path = '.'):
+    """
+    Returns total size of a path in bytes
+    """
+    total_size = 0
+    for dirpath, dirnames, filenames in os.walk(start_path):
+        for f in filenames:
+            fp = os.path.join(dirpath, f)
+            # skip if it is symbolic link
+            if not os.path.islink(fp):
+                total_size += os.path.getsize(fp)
+
+    return total_size
+
 def delete_folder(folder_path):
     shutil.rmtree(folder_path)  # removes the complete folder given at folder path
     print(f"[-] Deleted :{folder_path}")
@@ -13,20 +29,46 @@ def main():
     """
 
     search_results_path = input("Enter path to search results by detect_venv.py:")
+    global tot_size
+    tot_size = 0
+    skipped = []
     if os.path.exists(search_results_path) and os.path.isfile(search_results_path):
         with open(search_results_path, 'r') as results_file:
             for line in results_file:
-                name, location = line.strip('\n').split(':')
-                print(f"confirm to delete: {name}:{location} ? (y/N): ", end="")
+                name, location = line.strip('\n').split(':',maxsplit=1)
+                size_mb = get_size(location) / 1000 / 1024
+                tot_size += size_mb
+                if not size_mb > 0:
+                    print(f"-----skipped-----({name})\n")
+                    continue
+                print(f"confirm to delete: {name}:{location} [size: {size_mb:.03f}] ? (y/N): ", end="")
                 res = input()
                 if res == 'y' or res == 'Y':
                     print("\tDeleting...")
-                    delete_folder(location)
+                    try:
+                        delete_folder(location)
+                    except FileNotFoundError:
+                        pass
                 else:
                     print(f"-----skipped-----({name})\n")
+                    tot_size -= size_mb
+                    skipped.append(line.strip('\n'))
+        
+        print(f"\nSaved [{tot_size:.02f} MB] of Disk-Space")
+    if skipped:
+        print("[*] updating results file")
+        with open('temp.txt', 'w') as file:
+            file.write('\n'.join(skipped))
+        os.remove(search_results_path)
+        os.rename('temp.txt', search_results_path)
+        print(f"[+] File updated")
     else:
         print("Invalid file location entered, expecting a *.txt file.")
     print(f"{16*'---'}\nThat's all for now!")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        if tot_size > 0:
+            print(f"\nSaved [{tot_size:.02f} MB] of Disk-Space")

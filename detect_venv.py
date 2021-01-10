@@ -1,3 +1,4 @@
+import tqdm
 import multiprocessing
 import time
 import os, sys
@@ -15,8 +16,8 @@ def write_in_file(filename, root):
 
 def match_feature(file_name, dir_path):
     # this is the check pattern for windows only
-    if os.name == 'nt':
-        checks = ["Lib", "bin/activate", ""]
+    if sys.platform == 'win32':
+        checks = ["Lib", "Scripts/activate.bat", "Scripts/activate.ps1"]
     elif sys.platform == 'linux':
         checks = ["lib/*/site-packages", "bin/python"]
 
@@ -34,7 +35,7 @@ def match_feature(file_name, dir_path):
             if not results:
                 check_flag = False
     if check_flag:
-        if os.name == 'nt':
+        if sys.platform == 'win32':
             print(f"Windows 10 venv found, name:{os.path.basename(dir_path)}")
         elif sys.platform == 'linux':
             print(f"Linux venv found, name: {os.path.basename(dir_path)}")
@@ -46,7 +47,7 @@ def main_runner(dir_path):
         os.remove(file_name)
     print("Checking:",os.path.basename(dir_path))
     
-    for root, dirs, files in os.walk(dir_path):
+    for root, dirs, files in tqdm.tqdm(os.walk(dir_path)):
         if os.path.isdir(root):
             for dir in dirs.copy():
                 if dir.startswith('_') or dir.startswith('.'):
@@ -73,4 +74,4 @@ if __name__ == '__main__':
             print("searching in path:", check_path)
             pool.map(main_runner, (check_path,))
     b = timeit.default_timer()
-    print("Time taken:", (b-a), " seconds")
+    print(f"Time taken:{(b-a):.03f}, seconds")

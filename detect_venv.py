@@ -4,7 +4,11 @@ import os, sys
 import glob
 import timeit
 
+file_generated = False
+
 def write_in_file(filename, root):
+    global file_generated
+    file_generated = True
     venv_name = os.path.basename(root)
     with open(filename, 'a') as text_file:
         text_file.write(venv_name + ':' + root+'\n')
@@ -48,6 +52,8 @@ def main_runner(dir_path):
                 if dir.startswith('_') or dir.startswith('.'):
                     dirs.remove(dir)
             match_feature(file_name, root)
+    if file_generated:
+        print(f"Details file generated at:{file_name}")
     
 
 

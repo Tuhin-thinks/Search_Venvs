@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 from datetime import datetime
-=======
-import tqdm
->>>>>>> 9539e70233c7228617920c24a5244832308385ac
 import multiprocessing
 import time
 import os, sys
@@ -58,12 +54,7 @@ def main_runner(dir_path):
                 if dir.startswith('_') or dir.startswith('.'):
                     dirs.remove(dir)
             match_feature(file_name, root)
-<<<<<<< HEAD
     print(f"File generated as : {file_name}")
-=======
-    if file_generated:
-        print(f"Details file generated at:{file_name}")
->>>>>>> 9539e70233c7228617920c24a5244832308385ac
     
 
 

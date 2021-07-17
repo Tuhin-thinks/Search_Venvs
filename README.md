@@ -49,3 +49,5 @@ So, I thought, if I can filter the directory to the virtualenvs, I can exclude t
 > 1. Added feature to detect venvs also in **linux** based operating systems.
 
 > 2. Added script ([delete_venvs.py](https://github.com/Tuhin-thinks/Search_Venvs/blob/main/delete_venvs.py)) to selectively delete `venv` detected using [detect_venv.py](https://github.com/Tuhin-thinks/Search_Venvs/blob/main/detect_venv.py) from the `*.txt` file generated. (As mentioned in output format.)
+
+> 3. Added functionality in [delete_venvs.py](delete_venvs.py), to pass `-y` in command line args to automatically delete all virtualenvs.

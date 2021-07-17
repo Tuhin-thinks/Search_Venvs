@@ -48,13 +48,13 @@ def main_runner(dir_path):
         os.remove(file_name)
     print("Checking:",os.path.basename(dir_path))
     
-    for root, dirs, files in tqdm.tqdm(os.walk(dir_path)):
+    for root, dirs, files in os.walk(dir_path):
         if os.path.isdir(root):
             for dir in dirs.copy():
                 if dir.startswith('_') or dir.startswith('.'):
                     dirs.remove(dir)
             match_feature(file_name, root)
-    print(f"File generated as : {file_name}")
+    print(f"File generated as : {os.path.realpath(file_name)}")
     
 
 
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     check_paths =[]
     
     for i in range(count):
-        check_path = input("Enter checking path: (add :realpath) at end to search relative directory:")
+        check_path = input("Enter checking path: (add :relpath) at end to search relative directory:")
         if check_path.endswith(':relpath'):
             path = os.path.expanduser(check_path.split(':')[0])
         else:

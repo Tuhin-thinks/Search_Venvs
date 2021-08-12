@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>668</width>
+    <height>493</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>385</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>SearchVenvs</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="1" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <widget class="QFrame" name="frame_pafe_1">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <widget class="QFrame" name="frame">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <family>URW Gothic</family>
+                  <pointsize>11</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                  <stylestrategy>PreferAntialias</stylestrategy>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+	font: 11pt &quot;URW Gothic&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>*Select directory to search from</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_searchPath">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#lineEdit_searchPath{
+	border: none;
+	border-bottom: 1px solid blue;
+	font: 11pt &quot;URW Gothic&quot;;
+	padding: 2px 10px;
+}
+#lineEdit_searchPath::hover:!pressed{
+	border: none;
+	border-bottom: 2px solid blue;
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_open">
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#pushButton_open{
+	background-color: rgb(186, 189, 182);
+	border: 1px solid none;
+	font: 11pt &quot;URW Gothic&quot;;
+	border-radius: 2px;
+}
+#pushButton_open::hover:!pressed{
+	border: 2px solid blue;
+	font: 11pt &quot;URW Gothic&quot;;
+}
+#pushButton_open::pressed{
+	border: none;
+	font: 11pt &quot;URW Gothic&quot;;
+	padding: 2px;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Open</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QFrame" name="frame_2">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="styleSheet">
+                 <string notr="true">
+	font: 11pt &quot;URW Gothic&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>*File name to save output results</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_saveAs">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#lineEdit_saveAs{
+	border: none;
+	border-bottom: 1px solid blue;
+	font: 11pt &quot;URW Gothic&quot;;
+	padding: 2px 10px;
+}
+#lineEdit_saveAs::hover:!pressed{
+	border: none;
+	border-bottom: 2px solid blue;
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_saveAs">
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#pushButton_saveAs{
+	background-color: rgb(186, 189, 182);
+	border: 1px solid none;
+	font: 11pt &quot;URW Gothic&quot;;
+	border-radius: 2px;
+}
+#pushButton_saveAs::hover:!pressed{
+	border: 2px solid blue;
+	font: 11pt &quot;URW Gothic&quot;;
+}
+#pushButton_saveAs::pressed{
+	border: none;
+	font: 11pt &quot;URW Gothic&quot;;
+	padding: 2px;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Save As</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QFrame" name="frame_4">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Minimum</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="pushButton_startFinding">
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>195</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#pushButton_startFinding{
+	background-color: rgb(186, 189, 182);
+	border: 1px solid none;
+	font: 11pt &quot;URW Gothic&quot;;
+	border-radius: 2px;
+}
+#pushButton_startFinding::hover:!pressed{
+	border: 2px solid blue;
+	font: 11pt &quot;URW Gothic&quot;;
+}
+#pushButton_startFinding::pressed{
+	border: none;
+	font: 11pt &quot;URW Gothic&quot;;
+	padding: 2px;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Start finding</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Minimum</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QFrame" name="frame_page_header">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_changeMode">
+         <property name="minimumSize">
+          <size>
+           <width>121</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>121</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#pushButton_changeMode{
+	background-color: rgb(186, 189, 182);
+	border: 1px solid none;
+	font: 11pt &quot;URW Gothic&quot;;
+	border-radius: 2px;
+}
+#pushButton_changeMode::hover:!pressed{
+	border: 2px solid blue;
+	font: 11pt &quot;URW Gothic&quot;;
+}
+#pushButton_changeMode::pressed{
+	border: none;
+	font: 11pt &quot;URW Gothic&quot;;
+	padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Change Mode</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>668</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <addaction name="menuMenu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>&amp;Preferences</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+P</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>pushButton_changeMode</tabstop>
+  <tabstop>lineEdit_searchPath</tabstop>
+  <tabstop>pushButton_open</tabstop>
+  <tabstop>lineEdit_saveAs</tabstop>
+  <tabstop>pushButton_saveAs</tabstop>
+  <tabstop>pushButton_startFinding</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

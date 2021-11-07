@@ -15,11 +15,13 @@ def openDir(parent, caption_str: str, current_dir_str: Union[Any, str]):
     return None
 
 
-def saveFile(parent, caption: str, current__dir_str: Union[None, str]):
+def saveFile(parent, caption: str, current_dir__str: Union[None, str]):
     options = QFileDialog.Options()
     options |= QFileDialog.AcceptSave
-    file_dialog, _ = QFileDialog.getSaveFileUrl(parent, caption, dir=current__dir_str, options=options)
+    cur_dir__url = QUrl(current_dir__str)
+    file_dialog, _ = QFileDialog.getSaveFileUrl(parent, caption, dir=cur_dir__url, options=options)
 
     if file_dialog and _:
-        return file_dialog
+        file_dialog: 'QUrl'
+        return file_dialog.toLocalFile()
     return None

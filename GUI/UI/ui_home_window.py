@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'home_windowPhysUW.ui'
+## Form generated from reading UI file 'home_window.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(668, 493)
+        MainWindow.resize(829, 524)
         MainWindow.setMinimumSize(QSize(385, 0))
         self.actionPreferences = QAction(MainWindow)
         self.actionPreferences.setObjectName(u"actionPreferences")
@@ -197,6 +197,28 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.frame_pafe_1, 1, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page)
+        self.page_2 = QWidget()
+        self.page_2.setObjectName(u"page_2")
+        self.verticalLayout_2 = QVBoxLayout(self.page_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.frame_delete_venv_header = QFrame(self.page_2)
+        self.frame_delete_venv_header.setObjectName(u"frame_delete_venv_header")
+        self.frame_delete_venv_header.setMaximumSize(QSize(16777215, 50))
+        self.frame_delete_venv_header.setFrameShape(QFrame.StyledPanel)
+        self.frame_delete_venv_header.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_2.addWidget(self.frame_delete_venv_header)
+
+        self.frame_del_venv_tableframe = QFrame(self.page_2)
+        self.frame_del_venv_tableframe.setObjectName(u"frame_del_venv_tableframe")
+        self.frame_del_venv_tableframe.setFrameShape(QFrame.StyledPanel)
+        self.frame_del_venv_tableframe.setFrameShadow(QFrame.Raised)
+        self.verticalLayout = QVBoxLayout(self.frame_del_venv_tableframe)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+
+        self.verticalLayout_2.addWidget(self.frame_del_venv_tableframe)
+
+        self.stackedWidget.addWidget(self.page_2)
 
         self.gridLayout_4.addWidget(self.stackedWidget, 1, 0, 1, 1)
 
@@ -228,13 +250,18 @@ class Ui_MainWindow(object):
 
         self.gridLayout_5.addWidget(self.pushButton_changeMode, 0, 0, 1, 1)
 
+        self.label_curr_window_name = QLabel(self.frame_page_header)
+        self.label_curr_window_name.setObjectName(u"label_curr_window_name")
+
+        self.gridLayout_5.addWidget(self.label_curr_window_name, 1, 0, 1, 1)
+
 
         self.gridLayout_4.addWidget(self.frame_page_header, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 668, 22))
+        self.menubar.setGeometry(QRect(0, 0, 829, 20))
         self.menuMenu = QMenu(self.menubar)
         self.menuMenu.setObjectName(u"menuMenu")
         MainWindow.setMenuBar(self.menubar)
@@ -252,7 +279,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -272,6 +299,7 @@ class Ui_MainWindow(object):
         self.pushButton_saveAs.setText(QCoreApplication.translate("MainWindow", u"Save As", None))
         self.pushButton_startFinding.setText(QCoreApplication.translate("MainWindow", u"Start finding", None))
         self.pushButton_changeMode.setText(QCoreApplication.translate("MainWindow", u"Change Mode", None))
+        self.label_curr_window_name.setText("")
         self.menuMenu.setTitle(QCoreApplication.translate("MainWindow", u"Menu", None))
     # retranslateUi
 

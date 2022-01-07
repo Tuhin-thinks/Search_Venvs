@@ -20,7 +20,7 @@ def write_in_file(filename, root):
         text_file.write(venv_name + ':' + root + '\n')
 
 
-def match_feature(file_name, dir_path, signal_object: 'QtCore.Signal'):
+def match_feature(file_name, dir_path, signal_object: 'QtCore.Signal', venv_path_signal: 'QtCore.Signal'):
     # this is the check pattern for windows only
     if sys.platform == 'win32':
         checks = ["Lib", "Scripts/activate.bat", "Scripts/activate.ps1"]
@@ -41,15 +41,18 @@ def match_feature(file_name, dir_path, signal_object: 'QtCore.Signal'):
     if check_flag:
         if sys.platform == 'win32':
             signal_object.emit(f"Windows 10 venv found, name:{os.path.basename(dir_path)}")
+            venv_path_signal.emit(dir_path)
         elif sys.platform == 'linux':
             signal_object.emit(f"Linux venv found, name: {os.path.basename(dir_path)}")
+            venv_path_signal.emit(dir_path)
 
         write_in_file(file_name, dir_path)
 
 
-def begin_scan(dir_path, signal_object: 'QtCore.Signal', save_dir: Union['str', None] = None):
+def begin_scan(dir_path, signal_object: 'QtCore.Signal', venv_path_signal: 'QtCore.Signal', save_dir: Union['str', None] = None):
     """
     Function to scan a directory recursively and generate a text file
+    :param venv_path_signal: signal to capture venv paths
     :param save_dir: directory path to save results file. If not provided, uses the same directory path as the scan dir
     :param signal_object: PySide signal object, used to emit relevant information in runtime
     :param dir_path: starting dir for the scan
@@ -74,7 +77,7 @@ def begin_scan(dir_path, signal_object: 'QtCore.Signal', save_dir: Union['str', 
             for dir_ in dirs.copy():
                 if dir_.startswith('_') or dir_.startswith('.'):
                     dirs.remove(dir_)  # ignore hidden directories from the scan (for any OS)
-            match_feature(file_path, root, signal_object)
+            match_feature(file_path, root, signal_object, venv_path_signal)
 
     return os.path.realpath(file_path)
 
